@@ -11,12 +11,12 @@
     <EnableAggressiveTrimming>true</EnableAggressiveTrimming>
     <PublishTrimmed>true</PublishTrimmed>
     <TrimMode>full</TrimMode>
-    <RunAOTCompilation>true</RunAOTCompilation>
+    <RunAOTCompilation>false</RunAOTCompilation>
     <WasmBuildNative>true</WasmBuildNative>
     <WasmNativeStrip>true</WasmNativeStrip>
     <WasmAllowUndefinedSymbols>true</WasmAllowUndefinedSymbols>
-  </PropertyGroup>
 
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Raylib-cs" Version="6.1.1" />
   </ItemGroup>
@@ -36,6 +36,11 @@
       </PropertyGroup>
     </When>
     <When Condition=" $(Configuration) == 'Release' ">
+      <PropertyGroup>
+        <DebugType>None</DebugType>
+        <DebugSymbols>false</DebugSymbols>
+      </PropertyGroup>
+
       <PropertyGroup>
         <EmccFlags>-s USE_GLFW=3 -O3 -lexports.js</EmccFlags>
       </PropertyGroup>
